@@ -31,7 +31,9 @@ public class Spielfeld : MonoBehaviour
     { 
         for(int i = 0; i < nrBomben; i++)
         {
-            Vector2 position = new Vector2(Random.Range(1, breite-1), Random.Range(1, hoehe-1));
+            Vector2 position = new Vector2(
+                this.transform.position.x + Random.Range(1, breite-1), 
+                this.transform.position.y + Random.Range(1, hoehe-1));
             Instantiate(bombe, position, Quaternion.identity);
         }
     }

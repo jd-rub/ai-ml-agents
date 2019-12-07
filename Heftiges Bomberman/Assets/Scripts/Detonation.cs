@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class detonation : MonoBehaviour
+public class Detonation : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("entferneExplo", 0.9f, 4f);
+        InvokeRepeating("EntferneExplo", 0.9f, 4f);
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class detonation : MonoBehaviour
 
 
     //explosionen halten ca 1 sek 
-    private void entferneExplo()
+    private void EntferneExplo()
     {
         Destroy(gameObject);
     }
@@ -27,10 +27,10 @@ public class detonation : MonoBehaviour
     //treffe den Spieler
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "player_1")
+        if (col.gameObject.name == "Player_1")
         {
-            GameObject player_1 = GameObject.Find("player_1");
-            player_1.GetComponent<player_1>().hit(); 
+            Player_1 p1 = col.gameObject.GetComponent<Player_1>();
+            p1.Hit();
         }
     }
 }
