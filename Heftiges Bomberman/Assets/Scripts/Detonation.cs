@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class Detonation : MonoBehaviour
 {
+    private int createdFrame;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EntferneExplo", 0.9f, 4f);
+        createdFrame = Time.frameCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.frameCount == createdFrame + 60)
+        {
+            RemoveExplosion();
+        }
     }
 
 
     //explosionen halten ca 1 sek 
-    private void EntferneExplo()
+    private void RemoveExplosion()
     {
         Destroy(gameObject);
     }

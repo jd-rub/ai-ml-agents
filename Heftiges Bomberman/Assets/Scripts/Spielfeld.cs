@@ -8,33 +8,38 @@ public class Spielfeld : MonoBehaviour
     private static int breite = 17;
     private static int hoehe = 13;
     public int nrBomben = 3;
+    private int lastBombSpawn = 0;
 
     //prefab der Bombe
-    public GameObject bombe;
+    public GameObject bomb;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnBombe", 0f, 4f);
+        // InvokeRepeating("SpawnBomben", 0f, 4f);
     }
 
 // Update is called once per frame
     void Update()
     {
-        
+        if (Time.frameCount == lastBombSpawn + 180)
+        {
+            SpawnBomben();
+            lastBombSpawn = Time.frameCount;
+        }
     }
 
 
     //spawne random alle 4 sekunden einige bomben, Anzahl oben definiert
-    void SpawnBombe()
+    void SpawnBomben()
     { 
         for(int i = 0; i < nrBomben; i++)
         {
             Vector2 position = new Vector2(
                 this.transform.position.x + Random.Range(1, breite-1), 
                 this.transform.position.y + Random.Range(1, hoehe-1));
-            Instantiate(bombe, position, Quaternion.identity);
+            Instantiate(bomb, position, Quaternion.identity);
         }
     }
 }

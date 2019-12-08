@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bombe : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     //private int explosionlength;  //hab ich erstmal rausgenommen und direkt in die explosion gepackt, sollte später hier implementiert werden
 
