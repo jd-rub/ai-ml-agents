@@ -14,6 +14,7 @@ public class Player_1 : MonoBehaviour
     [SerializeField] private Sprite getroffen;
 
     public bool isDead;
+    private int deathFrame;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,15 @@ public class Player_1 : MonoBehaviour
         }
         else if (Input.GetKey("d")) {
             MoveRight();
+        }
+
+        // Frame-dependent respawn after death
+        if (isDead)
+        {
+            if (Time.frameCount == deathFrame + 60)
+            {
+                ResetPlayer();
+            }
         }
     }
 
@@ -70,17 +80,18 @@ public class Player_1 : MonoBehaviour
         speed = 0;
         isDead = true;
         this.GetComponent<SpriteRenderer>().sprite = getroffen;
-        StartCoroutine(ExecuteAfterTime(1));
+        deathFrame = Time.frameCount;
+        // StartCoroutine(ExecuteAfterTime(1));
     }
 
 
     //coroutine die nach 1sek nach dem treffer ausgeführt wird und den spieler automatisch resettet
-    IEnumerator ExecuteAfterTime(float time)
-    {
-        yield return new WaitForSeconds(time);
+    //IEnumerator ExecuteAfterTime(float time)
+    //{
+    //    yield return new WaitForSeconds(time);
 
-        ResetPlayer();
-    }
+    //    ResetPlayer();
+    //}
 
     void ResetPlayer()
     {

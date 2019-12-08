@@ -14,14 +14,14 @@ public class Detonation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount == createdFrame + 60)
+        // Explosionen halten ca 1 sek 
+        if (Time.frameCount == createdFrame + 59)
         {
             RemoveExplosion();
         }
     }
 
 
-    //explosionen halten ca 1 sek 
     private void RemoveExplosion()
     {
         Destroy(gameObject);
