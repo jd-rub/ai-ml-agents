@@ -12,12 +12,13 @@ public class Spielfeld : MonoBehaviour
 
     //prefab der Bombe
     public GameObject bomb;
-
+    public GameObject shoe;
 
     // Start is called before the first frame update
     void Start()
     {
         // InvokeRepeating("SpawnBomben", 0f, 4f);
+
     }
 
 // Update is called once per frame
@@ -26,6 +27,7 @@ public class Spielfeld : MonoBehaviour
         if (Time.frameCount == lastBombSpawn + 180)
         {
             SpawnBomben();
+            SpawnPerk();
             lastBombSpawn = Time.frameCount;
         }
     }
@@ -41,5 +43,12 @@ public class Spielfeld : MonoBehaviour
                 this.transform.position.y + Random.Range(1, hoehe-1));
             Instantiate(bomb, position, Quaternion.identity);
         }
+    }
+    void SpawnPerk()
+    {
+        Vector2 position = new Vector2(
+            this.transform.position.x + Random.Range(1, breite - 1),
+            this.transform.position.y + Random.Range(1, hoehe - 1));
+        Instantiate(shoe, position, Quaternion.identity);
     }
 }

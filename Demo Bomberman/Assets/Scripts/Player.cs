@@ -101,4 +101,9 @@ public class Player : MonoBehaviour
     {
         return new Vector2(Mathf.Round(this.transform.position.x), Mathf.Round(this.transform.position.y));
     }
+
+    public bool getAlive()
+    {
+        return alive;
+    }
 }

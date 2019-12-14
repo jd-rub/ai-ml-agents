@@ -17,7 +17,7 @@ public class BomberAgent : Agent
         
     }
 
-    public override void AgentAction(float[] vectorAction)
+    public override void AgentAction(float[] vectorAction, string lol)
     {
         switch (vectorAction[0])
         {
@@ -35,6 +35,7 @@ public class BomberAgent : Agent
             SetReward(-1.0f);
             Done();
         }
+        
     }
 
     public override float[] Heuristic()

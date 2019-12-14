@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players_alive: 0
+  g: {fileID: 3280576093790857388, guid: a7dec4723a17760438b1a32cb12ffe8e, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
 --- !u!4 &133397099
 Transform:
