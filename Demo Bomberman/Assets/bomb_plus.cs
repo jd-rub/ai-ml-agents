@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class th : MonoBehaviour
+public class bomb_plus : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,15 +18,13 @@ public class th : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.GetComponent<Player>().base_speed < 0.2f)
+            if (collision.GetComponent<Player>().maxBombs < 10)
             {
-                collision.gameObject.GetComponent<Player>().base_speed += 0.01f;
+                collision.GetComponent<Player>().maxBombs += 1;
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
         }
-        Debug.Log("lol");
     }
 }

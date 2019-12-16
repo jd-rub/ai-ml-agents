@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class partyhut : MonoBehaviour
+public class coffee : MonoBehaviour
 {
     Player player;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Perk";   
+        gameObject.tag = "Perk";
     }
 
     // Update is called once per frame
@@ -17,20 +17,22 @@ public class partyhut : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             Invoke("stop", 10);
             player = collision.GetComponent<Player>();
-            player.isOnCrack = true;
+            player.isOnSpeed = true;
+            player.isOnCannabis = false;
             gameObject.SetActive(false);
         }
     }
 
-    public void stop()
+    private void stop()
     {
-        player.isOnCrack = false;
+        player.isOnSpeed = false;
         Destroy(this.gameObject);
     }
 }
+

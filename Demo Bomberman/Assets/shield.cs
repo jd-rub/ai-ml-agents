@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class partyhut : MonoBehaviour
+public class shield : MonoBehaviour
 {
-    Player player;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Perk";   
+        gameObject.tag = "Perk";
     }
 
     // Update is called once per frame
@@ -21,16 +20,8 @@ public class partyhut : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Invoke("stop", 10);
-            player = collision.GetComponent<Player>();
-            player.isOnCrack = true;
-            gameObject.SetActive(false);
+            collision.GetComponent<Player>().shield = true;
+            Destroy(this.gameObject);
         }
-    }
-
-    public void stop()
-    {
-        player.isOnCrack = false;
-        Destroy(this.gameObject);
     }
 }

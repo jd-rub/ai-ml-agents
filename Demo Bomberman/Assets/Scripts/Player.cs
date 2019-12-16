@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
 
     //player stats
     private bool alive;
-    public float speed;
+    public float base_speed;
     public int id;
     public int maxBombs;
     public int activeBombs;
     public int strength;
+    public bool shield;
     
     //verschiedene sprites für den spieler
     public Sprite normal;
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     private string input_bomb;
     private bool button_down;
     private Vector2 oldPos;
-    public bool isOnCrack;
+    public bool isOnCrack, isOnSpeed, isOnCannabis;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +41,28 @@ public class Player : MonoBehaviour
         button_down = false;
         alive = true;
         isOnCrack = false;
+        isOnSpeed = false;
+        isOnCannabis = false;
+        shield = false;
         oldPos = rundePosition();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float speed;
+        if (isOnSpeed)
+        {
+            speed = 0.3f;
+        }
+        else if (isOnCannabis)
+        {
+            speed = 0.05f;
+        }
+        else
+        {
+            speed = base_speed;
+        }
         //Vertical Movement
         if (Input.GetAxisRaw(x_axis) != 0 && alive)
         {
@@ -90,9 +107,13 @@ public class Player : MonoBehaviour
     //wenn der Spieler getroffen wird
     public void hit()
     {
-        alive = false;
-        this.GetComponent<SpriteRenderer>().sprite = getroffen;
-        StartCoroutine(ExecuteAfterTime(1));
+        if (!shield)
+        {
+            alive = false;
+            this.GetComponent<SpriteRenderer>().sprite = getroffen;
+            StartCoroutine(ExecuteAfterTime(1));
+        }
+        else shield = !shield;
     }
 
 
