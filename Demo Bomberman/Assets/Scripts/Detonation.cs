@@ -9,6 +9,7 @@ public class Detonation : MonoBehaviour
     void Start()
     {
         createdFrame = Time.frameCount;
+        gameObject.tag = "Explosion";
     }
 
     // Update is called once per frame
@@ -28,10 +29,10 @@ public class Detonation : MonoBehaviour
     }
 
 
-
-    //treffe den Spieler
+    //triff den Spieler
     void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<Player>().hit(); 
@@ -45,6 +46,11 @@ public class Detonation : MonoBehaviour
             {
                 col.gameObject.GetComponent<Bomb>().Explode();
             }
+        }
+
+        if (col.gameObject.tag == "Perk")
+        {
+            Destroy(col.gameObject);
         }
     }
 }

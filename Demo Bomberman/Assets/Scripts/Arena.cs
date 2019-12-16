@@ -9,7 +9,7 @@ public class Arena : MonoBehaviour
     private static int breite = 17;
     private static int hoehe = 13;
     public int players_alive;
-    public GameObject g;
+    public GameObject g, phut;
 
     public int[,] grid = new int[breite, hoehe];
 
@@ -21,10 +21,11 @@ public class Arena : MonoBehaviour
     void Start()
     {
         players_alive = 2;
-        Instantiate(g, new Vector2(5,5), new Quaternion(0,0,0,0));
+        Instantiate(g, new Vector2(5, 5), new Quaternion(0, 0, 0, 0));
+        Instantiate(phut, new Vector2(7, 7), new Quaternion(0, 0, 0, 0));
     }
 
-// Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (players_alive <= 1)
@@ -38,12 +39,4 @@ public class Arena : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    private void spawnPerk(int perk)
-    {
-        if (perk == 0)
-        {
-            int x = Math.Random, y;
-
-        }
-    }
 }

@@ -7,7 +7,7 @@ public class th : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.tag = "Perk";
     }
 
     // Update is called once per frame
@@ -18,6 +18,7 @@ public class th : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.GetComponent<Player>().speed < 0.2f)
@@ -26,9 +27,6 @@ public class th : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
-        if (collision.gameObject.tag == "Explosion")
-        {
-            Destroy(this.gameObject);
-        }
+        Debug.Log("lol");
     }
 }

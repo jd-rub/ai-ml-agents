@@ -1585,6 +1585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players_alive: 0
   g: {fileID: 3280576093790857388, guid: a7dec4723a17760438b1a32cb12ffe8e, type: 3}
+  phut: {fileID: 7031563981758792839, guid: d410c8d1c7364b14092f74e485e50d84, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
 --- !u!4 &133397099
 Transform:
@@ -12651,6 +12652,7 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
+  isOnCrack: 0
 --- !u!61 &1147445955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22295,6 +22297,7 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: 8f03073d50c5d474a90247c0d0dd7d1c, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
+  isOnCrack: 0
 --- !u!212 &1989132989
 SpriteRenderer:
   m_ObjectHideFlags: 0

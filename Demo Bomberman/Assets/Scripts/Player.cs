@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private string y_axis;
     private string input_bomb;
     private bool button_down;
+    private Vector2 oldPos;
+    public bool isOnCrack;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
         input_bomb = "bomb_" + id.ToString();
         button_down = false;
         alive = true;
+        isOnCrack = false;
+        oldPos = rundePosition();
     }
 
     // Update is called once per frame
@@ -59,9 +63,9 @@ public class Player : MonoBehaviour
         }
 
         //Planting a bomb
-        if (Input.GetAxisRaw(input_bomb) == 1 && alive)
+        if ((Input.GetAxisRaw(input_bomb) == 1 || (rundePosition() != oldPos && isOnCrack)) && alive)
         {
-            if (!button_down)
+            if (!button_down || isOnCrack)
             {
                 if (activeBombs < maxBombs)
                 {
@@ -77,6 +81,9 @@ public class Player : MonoBehaviour
         {
             button_down = false;
         }
+
+        oldPos = rundePosition();
+        
     }
 
 
