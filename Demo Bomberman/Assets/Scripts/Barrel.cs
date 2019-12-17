@@ -13,9 +13,9 @@ public class Barrel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        feld = GameObject.Find("Spielfeld");
-        int x = (int)transform.position.x;
-        int y = (int)transform.position.y;
+        feld = this.transform.parent.transform.parent.gameObject;
+        int x = (int) (transform.position.x - feld.transform.position.x);
+        int y = (int) (transform.position.y - feld.transform.position.y);
         feld.GetComponent<Arena>().grid[x, y] = 2;
     }
 
@@ -27,12 +27,13 @@ public class Barrel : MonoBehaviour
 
     public void Hit()
     {
-        Instantiate(block, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        GameObject tile = Instantiate(block, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         if (Random.Range(0, 4) == 1)
         {
             GameObject perk = Instantiate(perks[Random.Range(0, perks.Length)], this.transform.position, Quaternion.identity);
             perk.layer = LayerMask.NameToLayer("Invincible_perk");
         }
+        tile.transform.parent = this.transform.parent.transform.parent;
         Destroy(this.gameObject);
     }
 }

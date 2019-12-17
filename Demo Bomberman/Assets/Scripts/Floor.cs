@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    public GameObject feld;
+    private Arena arena;
     // Start is called before the first frame update
     void Start()
     {
-        feld = GameObject.Find("Spielfeld");
-        int x = (int)transform.position.x;
-        int y = (int)transform.position.y;
-        feld.GetComponent<Arena>().grid[x, y] = 0;
+        arena = GetComponentInParent<Arena>();
+        int x = (int) (transform.position.x - arena.transform.position.x);
+        int y = (int) (transform.position.y - arena.transform.position.y);
+        arena.grid[x, y] = 0;
     }
 
     // Update is called once per frame

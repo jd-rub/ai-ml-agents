@@ -11,10 +11,7 @@ public class Arena : MonoBehaviour
     public int players_alive;
 
     public int[,] grid = new int[width, height];
-
-    //prefab der Bombe
-    public GameObject bombe;
-
+    public List<GameObject> players = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()

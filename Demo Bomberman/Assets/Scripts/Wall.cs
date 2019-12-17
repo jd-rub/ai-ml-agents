@@ -9,9 +9,9 @@ public class Wall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        feld = GameObject.Find("Spielfeld");
-        int x = (int) transform.position.x;
-        int y = (int)transform.position.y;
+        feld = this.transform.parent.transform.parent.gameObject;
+        int x = (int) (transform.position.x - feld.transform.position.x);
+        int y = (int) (transform.position.y - feld.transform.position.y);
         feld.GetComponent<Arena>().grid[x, y] = 1;
     }
 

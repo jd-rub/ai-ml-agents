@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    private GameObject[] players;  //All Players, used for collision detection
+    private List<GameObject> players;  //All Players, used for collision detection
     private GameObject owner; //owner of the bombe
     public bool active = true;
 
@@ -22,7 +22,8 @@ public class Bomb : MonoBehaviour
         InvokeRepeating("Explode", 2f, 4f); //bombs explode after 2 seconds
        
         //Find all Players and deactivate the collision
-        players = GameObject.FindGameObjectsWithTag("Player");
+        //players = GameObject.FindGameObjectsWithTag("Player");
+        players = GetComponentInParent<Arena>().players;
         foreach (GameObject player in players)
         {
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
@@ -52,8 +53,8 @@ public class Bomb : MonoBehaviour
     {
         active = false;
         strength = owner.GetComponent<Player>().strength;
-        Vector2 center = this.transform.position; //falls Bomben sich bewegen sollte man hier noch runden
-        Instantiate(exploAnfang, center, Quaternion.identity);
+        Vector2 center = this.transform.localPosition; //falls Bomben sich bewegen sollte man hier noch runden
+        Instantiate(exploAnfang, (Vector2) this.transform.position, Quaternion.identity);
 
         SpawnExplosion(Vector2.right, center, 0f);
         SpawnExplosion(Vector2.up, center, 90f);
@@ -65,20 +66,22 @@ public class Bomb : MonoBehaviour
 
     private void SpawnExplosion(Vector2 direction, Vector2 center, float angle)
     {
-        int[,] grid = GameObject.Find("Spielfeld").GetComponent<Arena>().grid;
+        int[,] grid = GetComponentInParent<Arena>().grid;
+        Transform field = GetComponentInParent<Transform>();
+        
         for (int i = 1; i <= strength; i++)
         {
             Vector2 position = center + i * direction;
-            if (grid[(int)position.x, (int)position.y] == 1) break; //checks if there's a wall
+            if (grid[(int) (position.x), (int) (position.y)] == 1) break; //checks if there's a wall
             else if (grid[(int)position.x, (int)position.y] == 2)
             {
-                GameObject expo = Instantiate(exploMitte, center + i * direction, Quaternion.Euler(0, 0, angle));
+                GameObject expo = Instantiate(exploMitte, (Vector2) this.transform.position + i * direction, Quaternion.Euler(0, 0, angle));
                 expo.tag = "Explosion";
                 break;
             }
             else
             {
-                GameObject expo = Instantiate(exploMitte, center + i * direction, Quaternion.Euler(0, 0, angle));
+                GameObject expo = Instantiate(exploMitte, (Vector2) this.transform.position + i * direction, Quaternion.Euler(0, 0, angle));
                 expo.tag = "Explosion";
             }
         }
