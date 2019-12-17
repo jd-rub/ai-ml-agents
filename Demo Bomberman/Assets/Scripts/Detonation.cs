@@ -39,7 +39,7 @@ public class Detonation : MonoBehaviour
             Player player = col.GetComponent<Player>();
             if (!hitPlayers.Contains(player))
             {
-                player.hit();
+                player.Hit();
                 hitPlayers.Add(player);
             }
         }

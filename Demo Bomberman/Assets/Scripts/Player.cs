@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         isOnSpeed = false;
         isOnCannabis = false;
         shield = false;
-        oldPos = rundePosition();
+        oldPos = RoundPosition();
     }
 
     // Update is called once per frame
@@ -80,14 +80,14 @@ public class Player : MonoBehaviour
         }
 
         //Planting a bomb
-        if ((Input.GetAxisRaw(input_bomb) == 1 || (rundePosition() != oldPos && isOnCrack)) && alive)
+        if ((Input.GetAxisRaw(input_bomb) == 1 || (RoundPosition() != oldPos && isOnCrack)) && alive)
         {
             if (!button_down || isOnCrack)
             {
                 if (activeBombs < maxBombs)
                 {
-                    GameObject asdf = Instantiate(bombe, rundePosition(), Quaternion.identity);
-                    asdf.GetComponent<Bomb>().setOwner(this.gameObject);
+                    GameObject asdf = Instantiate(bombe, RoundPosition(), Quaternion.identity);
+                    asdf.GetComponent<Bomb>().SetOwner(this.gameObject);
                     activeBombs++;
                 }
                 button_down = true;
@@ -99,13 +99,13 @@ public class Player : MonoBehaviour
             button_down = false;
         }
 
-        oldPos = rundePosition();
+        oldPos = RoundPosition();
         
     }
 
 
     //wenn der Spieler getroffen wird
-    public void hit()
+    public void Hit()
     {
         if (!shield)
         {
@@ -125,12 +125,12 @@ public class Player : MonoBehaviour
         GameObject.Find("Spielfeld").GetComponent<Arena>().players_alive--;
     }
 
-    private Vector2 rundePosition()
+    private Vector2 RoundPosition()
     {
         return new Vector2(Mathf.Round(this.transform.position.x), Mathf.Round(this.transform.position.y));
     }
 
-    public bool getAlive()
+    public bool GetAlive()
     {
         return alive;
     }

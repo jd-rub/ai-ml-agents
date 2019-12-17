@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class schnegge : MonoBehaviour
+public class Schnegge : MonoBehaviour
 {
     Player player;
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class schnegge : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Invoke("stop", 10);
+            Invoke("Stop", 10);
             player = collision.GetComponent<Player>();
             player.isOnCannabis = true;
             player.isOnSpeed = false;
@@ -29,7 +29,7 @@ public class schnegge : MonoBehaviour
         }
     }
 
-    private void stop()
+    private void Stop()
     {
         player.isOnCannabis = false;
         Destroy(this.gameObject);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shield : MonoBehaviour
+public class Boot : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,12 +16,17 @@ public class shield : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+       
         if (collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<Player>().shield = true;
+            if (collision.gameObject.GetComponent<Player>().base_speed < 0.2f)
+            {
+                collision.gameObject.GetComponent<Player>().base_speed += 0.01f;
+            }
             Destroy(this.gameObject);
         }
+        Debug.Log("lol");
     }
 }

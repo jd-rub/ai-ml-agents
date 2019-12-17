@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bomb_plus : MonoBehaviour
+public class Cannon : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,13 @@ public class bomb_plus : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.GetComponent<Player>().maxBombs < 10)
+            if (collision.GetComponent<Player>().strength < 10)
             {
-                collision.GetComponent<Player>().maxBombs += 1;
+                collision.GetComponent<Player>().strength += 1;
                 Destroy(this.gameObject);
             }
         }

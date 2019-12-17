@@ -43,7 +43,7 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    public void setOwner(GameObject owner)
+    public void SetOwner(GameObject owner)
     {
         this.owner = owner;
     }
@@ -55,15 +55,15 @@ public class Bomb : MonoBehaviour
         Vector2 center = this.transform.position; //falls Bomben sich bewegen sollte man hier noch runden
         Instantiate(exploAnfang, center, Quaternion.identity);
 
-        spawnExplosion(Vector2.right, center, 0f);
-        spawnExplosion(Vector2.up, center, 90f);
-        spawnExplosion(Vector2.left, center, 180f);
-        spawnExplosion(Vector2.down, center, 270f);
+        SpawnExplosion(Vector2.right, center, 0f);
+        SpawnExplosion(Vector2.up, center, 90f);
+        SpawnExplosion(Vector2.left, center, 180f);
+        SpawnExplosion(Vector2.down, center, 270f);
         owner.GetComponent<Player>().activeBombs--;
         Destroy(gameObject);
     }
 
-    private void spawnExplosion(Vector2 direction, Vector2 center, float angle)
+    private void SpawnExplosion(Vector2 direction, Vector2 center, float angle)
     {
         int[,] grid = GameObject.Find("Spielfeld").GetComponent<Arena>().grid;
         for (int i = 1; i <= strength; i++)

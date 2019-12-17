@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class th : MonoBehaviour
+public class Coffee : MonoBehaviour
 {
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +19,20 @@ public class th : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.GetComponent<Player>().base_speed < 0.2f)
-            {
-                collision.gameObject.GetComponent<Player>().base_speed += 0.01f;
-            }
-            Destroy(this.gameObject);
+            Invoke("Stop", 10);
+            player = collision.GetComponent<Player>();
+            player.isOnSpeed = true;
+            player.isOnCannabis = false;
+            gameObject.SetActive(false);
         }
-        Debug.Log("lol");
+    }
+
+    private void Stop()
+    {
+        player.isOnSpeed = false;
+        Destroy(this.gameObject);
     }
 }
+

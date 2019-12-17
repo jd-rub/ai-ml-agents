@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Arena : MonoBehaviour
 {
     //länge und breite des spielfeldes und anzahl der bomben die spawnen
-    private static int breite = 17;
-    private static int hoehe = 13;
+    private static int width = 17;
+    private static int height = 13;
     public int players_alive;
     public GameObject g;
 
-    public int[,] grid = new int[breite, hoehe];
+    public int[,] grid = new int[width, height];
 
     //prefab der Bombe
     public GameObject bombe;
