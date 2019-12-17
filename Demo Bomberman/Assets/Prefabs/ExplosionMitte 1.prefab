@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2275611554969754551}
   - component: {fileID: 7836051638219114575}
   - component: {fileID: -5713267777004225942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExplosionMitte 1
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 9d2f280f978001445bcebfd0330c6412, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -7,6 +7,7 @@ TagManager:
   - Bomb
   - Explosion
   - Perk
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
-  - 
+  - Invincible_player
+  - Invincible_perk
+  - Explosion
   - 
   - 
   - 

@@ -9,7 +9,6 @@ public class Arena : MonoBehaviour
     private static int width = 17;
     private static int height = 13;
     public int players_alive;
-    public GameObject g;
 
     public int[,] grid = new int[width, height];
 
@@ -21,7 +20,6 @@ public class Arena : MonoBehaviour
     void Start()
     {
         players_alive = 2;
-        Instantiate(g, new Vector2(5, 5), new Quaternion(0, 0, 0, 0));
     }
 
     // Update is called once per frame

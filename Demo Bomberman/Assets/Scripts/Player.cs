@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public int activeBombs;
     public int strength;
     public bool shield;
-    
+    private bool invincible;
+
     //verschiedene sprites für den spieler
     public Sprite normal;
     public Sprite getroffen;
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
         isOnCrack = false;
         isOnSpeed = false;
         isOnCannabis = false;
-        shield = false;
+        shield = invincible = false;
         oldPos = RoundPosition();
     }
 
@@ -107,13 +108,19 @@ public class Player : MonoBehaviour
     //wenn der Spieler getroffen wird
     public void Hit()
     {
-        if (!shield)
+        if (!shield && !invincible)
         {
             alive = false;
             this.GetComponent<SpriteRenderer>().sprite = getroffen;
             StartCoroutine(ExecuteAfterTime(1));
         }
-        else shield = !shield;
+        else
+        {
+            invincible = true;
+            gameObject.layer = LayerMask.NameToLayer("Invincible_player");
+            shield = false;
+            Invoke("Inv_frames", 1.2f);
+        }
     }
 
 
@@ -133,5 +140,11 @@ public class Player : MonoBehaviour
     public bool GetAlive()
     {
         return alive;
+    }
+
+    private void Inv_frames()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        invincible = false;
     }
 }

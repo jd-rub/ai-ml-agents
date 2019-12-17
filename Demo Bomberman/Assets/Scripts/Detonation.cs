@@ -56,5 +56,10 @@ public class Detonation : MonoBehaviour
         {
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.tag == "Barrel")
+        {
+            col.GetComponent<Barrel>().Hit();
+        }
     }
 }

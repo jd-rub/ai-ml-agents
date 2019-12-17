@@ -70,6 +70,12 @@ public class Bomb : MonoBehaviour
         {
             Vector2 position = center + i * direction;
             if (grid[(int)position.x, (int)position.y] == 1) break; //checks if there's a wall
+            else if (grid[(int)position.x, (int)position.y] == 2)
+            {
+                GameObject expo = Instantiate(exploMitte, center + i * direction, Quaternion.Euler(0, 0, angle));
+                expo.tag = "Explosion";
+                break;
+            }
             else
             {
                 GameObject expo = Instantiate(exploMitte, center + i * direction, Quaternion.Euler(0, 0, angle));

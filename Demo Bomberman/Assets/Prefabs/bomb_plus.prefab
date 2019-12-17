@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1882930175563669392}
   - component: {fileID: 4937718255102769241}
   - component: {fileID: 1365490590540760356}
+  - component: {fileID: 1430386356913139092}
   m_Layer: 0
   m_Name: bomb_plus
-  m_TagString: Untagged
+  m_TagString: Perk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 8ee3287e33ef53a408b12ffab8ba506d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -140,5 +141,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1055efd74e3b2e14d9f76b1296bfdc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1430386356913139092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402546589596309969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1054709a7cf09624f80238007d70144d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

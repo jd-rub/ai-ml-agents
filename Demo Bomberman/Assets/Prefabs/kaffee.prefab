@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 729237123960602933}
   - component: {fileID: 2987243028972117344}
+  - component: {fileID: -8980406923212114455}
   - component: {fileID: 6047641045552697500}
   - component: {fileID: 3912246504139674307}
   - component: {fileID: 1052580070703979456}
   m_Layer: 0
   m_Name: kaffee
-  m_TagString: Untagged
+  m_TagString: Perk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 9b9e878e06287f746855a56c25a7c865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,6 +84,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8980406923212114455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363128238132704997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1054709a7cf09624f80238007d70144d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6047641045552697500
 MonoBehaviour:
   m_ObjectHideFlags: 0
