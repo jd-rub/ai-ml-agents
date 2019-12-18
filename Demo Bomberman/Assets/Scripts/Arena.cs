@@ -30,7 +30,7 @@ public class Arena : MonoBehaviour
 
     private void Reset()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlayableScene");
     }
 
 }
