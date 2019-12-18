@@ -27,6 +27,5 @@ public class Boot : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
-        Debug.Log("lol");
     }
 }

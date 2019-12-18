@@ -10,8 +10,11 @@ public class Arena : MonoBehaviour
     private static int height = 13;
     public int players_alive;
 
-    public int[,] grid = new int[width, height];
     public List<GameObject> players = new List<GameObject>();
+
+
+    //Represents the grid of the arena, 0 is a floor tile, 1 a wall, 2 a barrel and 3 a bomb, 4 a Perk
+    public int[,] grid = new int[width, height];
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,8 @@ public class Arena : MonoBehaviour
 
     private void Reset()
     {
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        GetComponentInParent<ResetGame>().Reset_Game(this.transform.position);
+        Destroy(gameObject);
     }
-
 }

@@ -15562,6 +15562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players_alive: 0
   players: []
+  spielfeld: {fileID: 6271622906124803036}
 --- !u!212 &6271622906124803033
 SpriteRenderer:
   m_ObjectHideFlags: 0

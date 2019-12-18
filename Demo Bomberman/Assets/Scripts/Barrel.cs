@@ -32,6 +32,7 @@ public class Barrel : MonoBehaviour
         {
             GameObject perk = Instantiate(perks[Random.Range(0, perks.Length)], this.transform.position, Quaternion.identity);
             perk.layer = LayerMask.NameToLayer("Invincible_perk");
+            perk.transform.parent = this.transform.parent.transform.parent.transform;
         }
         tile.transform.parent = this.transform.parent.transform.parent;
         Destroy(this.gameObject);

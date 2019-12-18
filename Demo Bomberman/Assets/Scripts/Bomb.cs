@@ -14,6 +14,7 @@ public class Bomb : MonoBehaviour
     //prefabs der Explosionen
     public GameObject exploMitte;
     public GameObject exploAnfang;
+    private Vector2 position;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,8 @@ public class Bomb : MonoBehaviour
         {
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
         }
+        position = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        GetComponentInParent<Arena>().grid[(int)position.x, (int) position.y] = 3;
     }
 
     // Update is called once per frame
@@ -61,6 +64,7 @@ public class Bomb : MonoBehaviour
         SpawnExplosion(Vector2.left, center, 180f);
         SpawnExplosion(Vector2.down, center, 270f);
         owner.GetComponent<Player>().activeBombs--;
+        GetComponentInParent<Arena>().grid[(int)position.x, (int)position.y] = 0;
         Destroy(gameObject);
     }
 
