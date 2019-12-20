@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Arena : MonoBehaviour
 {
     //länge und breite des spielfeldes und anzahl der bomben die spawnen
-    private static int width = 17;
-    private static int height = 13;
+    public static int width = 17;
+    public static int height = 13;
     public int players_alive;
 
     public List<GameObject> players = new List<GameObject>();
@@ -25,13 +25,13 @@ public class Arena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (players_alive <= 1)
+       if (players_alive <= 1)
         {
             Reset();
         }
     }
 
-    private void Reset()
+    public void Reset()
     {
         //SceneManager.LoadScene("SampleScene");
         GetComponentInParent<ResetGame>().Reset_Game(this.transform.position);

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : Perk
 {
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Perk";
     }
 
     // Update is called once per frame
@@ -16,11 +15,16 @@ public class Shield : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             collision.GetComponent<Player>().shield = true;
+
+            BomberAgent agent = collision.GetComponent<BomberAgent>();
+            agent.AddReward(1f);
+            agent.Done();
+
             Destroy(this.gameObject);
         }
     }

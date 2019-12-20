@@ -2,21 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb_plus : MonoBehaviour
+public class Bomb_plus : Perk
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameObject.tag = "Perk";
-    }
-
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

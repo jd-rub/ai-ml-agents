@@ -17,7 +17,7 @@ public class BomberAgent : Agent
         
     }
 
-    public override void AgentAction(float[] vectorAction, string lol)
+    public override void AgentAction(float[] vectorAction)
     {
         switch (vectorAction[0])
         {
