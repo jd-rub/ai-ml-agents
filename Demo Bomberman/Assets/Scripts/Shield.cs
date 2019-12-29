@@ -24,6 +24,7 @@ public class Shield : Perk
             BomberAgent agent = collision.GetComponent<BomberAgent>();
             agent.AddReward(1f);
             agent.Done();
+            Debug.Log("Done");
 
             Destroy(this.gameObject);
         }

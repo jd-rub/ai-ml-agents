@@ -5,14 +5,14 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
 
-    public GameObject feld;
+    public Arena feld;
     // Start is called before the first frame update
     void Start()
     {
-        feld = this.transform.parent.transform.parent.gameObject;
-        int x = (int) (transform.position.x - feld.transform.position.x);
-        int y = (int) (transform.position.y - feld.transform.position.y);
-        feld.GetComponent<Arena>().grid[x, y] = 1;
+        feld = GetComponentInParent<Arena>();
+        int x = (int)this.transform.localPosition.x;
+        int y = (int)this.transform.localPosition.y;
+        feld.grid[x, y] = 1;
     }
 
     // Update is called once per frame

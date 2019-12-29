@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int strength;
     public bool shield;
     private bool invincible;
+    public bool agent;
 
     //verschiedene sprites für den spieler
     public Sprite normal;
@@ -48,7 +49,9 @@ public class Player : MonoBehaviour
         shield = invincible = false;
         oldPos = RoundPosition();
 
-        GetComponentInParent<Arena>().players.Add(this.transform.gameObject);
+        if (agent)
+        this.transform.parent.GetChild(1).GetComponent<Arena>().players.Add(this.transform.gameObject);
+        else GetComponentInParent<Arena>().players.Add(this.transform.gameObject);
     }
 
     // Update is called once per frame

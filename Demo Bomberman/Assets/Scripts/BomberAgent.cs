@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using MLAgents;
 using System;
+using MLAgents.Sensor;
 
 public class BomberAgent : Agent
 {
     public Player player;
+    private Vector3 startingPos;
     // Start is called before the first frame update
     void Start()
     {
+        this.GetComponent<RenderTextureSensorComponent>().renderTexture = this.GetComponentInParent<ResetGame>().getRenderTexture();
+        startingPos = new Vector3(-5, -5.8f, 5);
     }
 
     public override void AgentReset()
     {
         Debug.Log("Agent Reset");
-        player.GetComponentInParent<Arena>().Reset();
+        player.transform.parent.GetChild(1).GetComponent<Arena>().Reset();
+        this.transform.localPosition = startingPos;
     }
 
     public override void AgentAction(float[] vectorAction)

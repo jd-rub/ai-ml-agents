@@ -8,7 +8,9 @@ public class LearningArena : Arena
     public GameObject[] perks;
     void Start()
     {
-        grid = GetComponent<Arena>().grid;
+        
+        grid = this.GetComponent<Arena>().grid;
+        //Debug.Log(grid[8,12]);
     }
     // Update is called once per frame
     void Update()
@@ -21,7 +23,8 @@ public class LearningArena : Arena
                 x = Random.Range(0, width);
                 y = Random.Range(0, height);
             } while (grid[x, y] != 0);
-            SpawnPerk(x, y);
+            SpawnPerk(x,y);
+            //Debug.Log("x: " + x + ", y: " + y + ", grid:" + grid[x,y]);
         }
     }
 
