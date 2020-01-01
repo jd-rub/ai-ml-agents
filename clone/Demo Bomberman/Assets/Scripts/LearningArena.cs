@@ -29,7 +29,7 @@ public class LearningArena : Arena
     void Update()
     {
         frame++;
-        if ((frame%200 == 0) || (frame == 1))
+/*        if ((frame%200 == 0) || (frame == 1))
         {
             perkList.Add(SpawnPerk());
         }
@@ -40,16 +40,18 @@ public class LearningArena : Arena
                 if ((frame-perk.GetComponent<Perk>().instantiated)>0) this.transform.parent.GetChild(0).GetComponent<BomberAgent>().AddReward(-0.005f);
             }
         }
-    }
+  */  }
 
     GameObject SpawnPerk()
     {
         int x, y;
-        do
+        /*do
         {
             x = Random.Range(width/4, width*3/4);
             y = Random.Range(height/4, height*3/4);
-        } while (grid[x, y] != 0);
+        } while (grid[x, y] != 0);*/
+        x = 7;
+        y = 3;
         GameObject perk = Instantiate(perks[Random.Range(0, perks.Length)], new Vector2(this.transform.position.x + x, this.transform.position.y + y), Quaternion.identity);
         perk.layer = LayerMask.NameToLayer("Invincible_perk");
         perk.transform.parent = this.transform;

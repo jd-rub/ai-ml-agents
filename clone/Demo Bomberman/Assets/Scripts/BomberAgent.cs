@@ -38,17 +38,19 @@ public class BomberAgent : Agent
 
     public override void CollectObservations()
     {
-        int[,] grid = this.transform.parent.GetChild(1).GetComponent<Arena>().grid;
+        /*int[,] grid = this.transform.parent.GetChild(1).GetComponent<Arena>().grid;
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
                 AddVectorObs(grid[i, j]);
             }
-        }
+        }*/
         AddVectorObs(this.transform.position);
-        AddVectorObs(this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk.transform.position.x);
-        AddVectorObs(this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk.transform.position.y);
+        
+        if (this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk != null)
+            AddVectorObs(this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk.transform.position);
+     
     }
 
     public override void AgentAction(float[] vectorAction)
@@ -77,10 +79,10 @@ public class BomberAgent : Agent
         if (steps > 250)
         {
             steps = 0;
-            if (!found_a_perk) AddReward(-0.15f);
+            //if (!found_a_perk) AddReward(-0.15f);
             Done();
         }
-        Debug.Log(GetCumulativeReward());
+
     }
 
     public override float[] Heuristic()

@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -601,12 +601,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 00e59df9fb8f9b145ae9fe54f35f6c44, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 224
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
