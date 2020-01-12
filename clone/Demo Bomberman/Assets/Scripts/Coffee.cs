@@ -17,15 +17,15 @@ public class Coffee : Perk
         {
             Invoke("Stop", 10);
             player = collision.GetComponent<Player>();
-            player.isOnSpeed = true;
-            player.isOnCannabis = false;
+            player.hasCoffee = true;
+            player.hasSnail = false;
             gameObject.SetActive(false);
         }
     }
 
     private void Stop()
     {
-        player.isOnSpeed = false;
+        player.hasCoffee = false;
         Destroy(this.gameObject);
     }
 }

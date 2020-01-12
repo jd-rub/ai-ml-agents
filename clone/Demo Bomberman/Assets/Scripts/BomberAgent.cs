@@ -21,7 +21,8 @@ public class BomberAgent : Agent
 
     public override void AgentReset()
     {
-        Debug.Log("Agent Reset ");
+        //Debug.Log("Agent Reset ");
+        this.GetComponent<Player>().SetAlive(true);
         player.transform.parent.GetChild(1).GetComponent<Arena>().Reset();
         this.transform.localPosition = startingPos;
     }
@@ -32,30 +33,30 @@ public class BomberAgent : Agent
         {
             AddReward(0.15f);
             found_a_perk = true;
-            Done();
+            
         }
     }
 
     public override void CollectObservations()
     {
-        /*int[,] grid = this.transform.parent.GetChild(1).GetComponent<Arena>().grid;
+        int[,] grid = this.transform.parent.GetChild(1).GetComponent<Arena>().grid;
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
                 AddVectorObs(grid[i, j]);
             }
-        }*/
+        }
         AddVectorObs(this.transform.position);
         
-        if (this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk != null)
-            AddVectorObs(this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk.transform.position);
+        /*if (this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk != null)
+            AddVectorObs(this.transform.parent.GetChild(1).GetComponent<LearningArena>().perk.transform.position);*/
      
     }
 
     public override void AgentAction(float[] vectorAction)
     {
-        switch (vectorAction[0])
+        switch ((int)Math.Ceiling(vectorAction[0]))
         {
             case 0: player.MoveHorizontal(-1);
                 break;
@@ -64,6 +65,9 @@ public class BomberAgent : Agent
             case 2: player.MoveVertical(-1);
                 break;
             case 3: player.MoveVertical(1);
+                break;
+            default:
+                
                 break;
         }
         //if (vectorAction[1] == 1)
@@ -76,9 +80,12 @@ public class BomberAgent : Agent
         }
         steps++;
 
-        if (steps > 250)
+        //if ((steps % 500 == 0) && (steps != 0) && !found_a_perk) AddReward(-0.05f);
+        if ((steps % 75 == 0) && (steps != 0))
+            AddReward(0.015f);
+        if (steps > 1000)
         {
-            steps = 0;
+            AddReward(0.15f);
             //if (!found_a_perk) AddReward(-0.15f);
             Done();
         }

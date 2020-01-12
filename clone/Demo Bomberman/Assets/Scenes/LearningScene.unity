@@ -203,6 +203,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae17b8f966bcb244288e741b7360b139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TrainingConfiguration:
+    width: 80
+    height: 80
+    qualityLevel: 1
+    timeScale: 100
+    targetFrameRate: -1
+  m_InferenceConfiguration:
+    width: 1280
+    height: 720
+    qualityLevel: 5
+    timeScale: 1
+    targetFrameRate: 60
+  resetParameters:
+    m_ResetParameters: []
 --- !u!4 &191516946
 Transform:
   m_ObjectHideFlags: 0
@@ -314,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -323,7 +337,6 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &287081000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,9 +424,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &287081004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -601,16 +614,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: c90a0aea04a495c4f8b6c68c73171e1a, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &600395442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
-    maxStep: 1000
+    maxStep: 50000
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 3
@@ -698,9 +710,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &600395446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -859,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -868,7 +880,6 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &992162323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,9 +967,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &992162327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1137,7 +1148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -1146,7 +1157,6 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &1302821265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,9 +1244,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &1302821269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1541,7 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -1550,7 +1560,6 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &1726696950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,9 +1647,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &1726696954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1993,7 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 6
+    vectorObservationSize: 224
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     vectorActionDescriptions: []
@@ -2002,7 +2011,6 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Osama
-  m_useChildSensors: 1
 --- !u!114 &1929737495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,9 +2098,9 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!212 &1929737499
 SpriteRenderer:
   m_ObjectHideFlags: 0

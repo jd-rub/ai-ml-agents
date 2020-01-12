@@ -17,14 +17,14 @@ public class Partyhut : Perk
         {
             Invoke("Stop", 10);
             player = collision.GetComponent<Player>();
-            player.isOnCrack = true;
+            player.hasPartyHut = true;
             gameObject.SetActive(false);
         }
     }
 
     public void Stop()
     {
-        player.isOnCrack = false;
+        player.hasPartyHut = false;
         Destroy(this.gameObject);
     }
 }

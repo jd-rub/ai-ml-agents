@@ -17,15 +17,15 @@ public class Schnegge : Perk
         {
             Invoke("Stop", 10);
             player = collision.GetComponent<Player>();
-            player.isOnCannabis = true;
-            player.isOnSpeed = false;
+            player.hasSnail = true;
+            player.hasCoffee = false;
             gameObject.SetActive(false);
         }
     }
 
     private void Stop()
     {
-        player.isOnCannabis = false;
+        player.hasSnail = false;
         Destroy(this.gameObject);
     }
 }

@@ -5,13 +5,11 @@ public class GridAcademy : Academy
 {
     public Camera MainCamera;
 
-    public override void InitializeAcademy()
+    public override void AcademyReset()
     {
-        FloatProperties.RegisterCallback("gridSize", f =>
-        {
-            MainCamera.transform.position = new Vector3(-(f - 1) / 2f, f * 1.25f, -(f - 1) / 2f);
-            MainCamera.orthographicSize = (f + 5f) / 2f;
-        });
-
+        MainCamera.transform.position = new Vector3(-((int)resetParameters["gridSize"] - 1) / 2f,
+            (int)resetParameters["gridSize"] * 1.25f,
+            -((int)resetParameters["gridSize"] - 1) / 2f);
+        MainCamera.orthographicSize = ((int)resetParameters["gridSize"] + 5f) / 2f;
     }
 }

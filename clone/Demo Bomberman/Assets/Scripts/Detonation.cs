@@ -6,9 +6,12 @@ public class Detonation : MonoBehaviour
 {
     private int createdFrame;
     private ArrayList hitPlayers;
+    private Vector2 position;
     // Start is called before the first frame update
     void Start()
     {
+        position = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        GetComponentInParent<Arena>().grid[(int)position.x, (int)position.y] = 7;
         createdFrame = Time.frameCount;
         gameObject.tag = "Explosion";
         hitPlayers = new ArrayList();

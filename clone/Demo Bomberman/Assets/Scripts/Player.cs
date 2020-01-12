@@ -29,23 +29,23 @@ public class Player : MonoBehaviour
     private string input_bomb;
     private bool button_down;
     private Vector2 oldPos;
-    public bool isOnCrack, isOnSpeed, isOnCannabis;
+    public bool hasPartyHut, hasCoffee, hasSnail;
     private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        maxBombs = 3;
+        maxBombs = 5;
         activeBombs = 0;
         x_axis = "move_x_" + id.ToString();
         y_axis = "move_y_" + id.ToString();
         input_bomb = "bomb_" + id.ToString();
         button_down = false;
         alive = true;
-        isOnCrack = false;
-        isOnSpeed = false;
-        isOnCannabis = false;
+        hasPartyHut = false;
+        hasCoffee = false;
+        hasSnail = false;
         shield = invincible = false;
         oldPos = RoundPosition();
 
@@ -57,11 +57,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnSpeed)
+        if (hasCoffee)
         {
             speed = 0.3f;
         }
-        else if (isOnCannabis)
+        else if (hasSnail)
         {
             speed = 0.05f;
         }
@@ -84,9 +84,9 @@ public class Player : MonoBehaviour
         }
 
         //Planting a bomb
-        if ((Input.GetAxisRaw(input_bomb) == 1 || (RoundPosition() != oldPos && isOnCrack)) && alive)
+        if ((Input.GetAxisRaw(input_bomb) == 1 || (RoundPosition() != oldPos && hasPartyHut)) && alive)
         {
-            if (!button_down || isOnCrack)
+            if (!button_down || hasPartyHut)
             {
                 PlaceBomb();
                 button_down = true;
@@ -133,8 +133,8 @@ public class Player : MonoBehaviour
         if (!shield && !invincible)
         {
             alive = false;
-            this.GetComponent<SpriteRenderer>().sprite = getroffen;
-            StartCoroutine(ExecuteAfterTime(1));
+            //this.GetComponent<SpriteRenderer>().sprite = getroffen;
+            //StartCoroutine(ExecuteAfterTime(1));
         }
         else
         {
@@ -163,6 +163,11 @@ public class Player : MonoBehaviour
     public bool GetAlive()
     {
         return alive;
+    }
+
+    public void SetAlive(bool alive)
+    {
+        this.alive = alive;
     }
 
     private void Inv_frames()
