@@ -27,10 +27,10 @@ public class ResetGame : MonoBehaviour
         feld.transform.parent = this.transform;
 
         GameObject cam = feld.transform.Find("AgentCam").gameObject;
-        GameObject canvas = feld.transform.Find("Canvas").gameObject;
+        //GameObject canvas = feld.transform.Find("Canvas").gameObject;
 
         cam.GetComponent<Camera>().targetTexture = render;
-        canvas.GetComponent<RawImage>().texture = render;
+        //canvas.GetComponent<RawImage>().texture = render;
         
     }
 
