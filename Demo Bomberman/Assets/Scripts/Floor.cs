@@ -11,12 +11,6 @@ public class Floor : MonoBehaviour
         arena = GetComponentInParent<Arena>();
         int x = (int) (transform.position.x - arena.transform.position.x);
         int y = (int) (transform.position.y - arena.transform.position.y);
-        arena.grid[x, y] = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        arena.grid[x, y] = (int)Arena.GridValues.FLOOR;
     }
 }

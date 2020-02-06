@@ -5,20 +5,22 @@ using UnityEngine;
 public class Detonation : MonoBehaviour
 {
     private int createdFrame;
-    private ArrayList hitPlayers;
+    private Vector2 position;
+    public int owner;
+
     // Start is called before the first frame update
     void Start()
     {
+        position = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        this.transform.parent.GetComponent<Arena>().grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)] = (int)Arena.GridValues.DETONATION;
         createdFrame = Time.frameCount;
         gameObject.tag = "Explosion";
-        hitPlayers = new ArrayList();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         // Explosionen halten ca 1 sek 
-        if (Time.frameCount == createdFrame + 59)
+        if (Time.frameCount >= createdFrame + 59)
         {
             RemoveExplosion();
         }
@@ -27,6 +29,7 @@ public class Detonation : MonoBehaviour
 
     private void RemoveExplosion()
     {
+        this.transform.parent.GetComponent<Arena>().grid[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)] = (int)Arena.GridValues.FLOOR;
         Destroy(gameObject);
     }
 
@@ -37,11 +40,37 @@ public class Detonation : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Player player = col.GetComponent<Player>();
-            if (!hitPlayers.Contains(player))
+            if (!player.playMode)
             {
-                player.Hit();
-                hitPlayers.Add(player);
+                if (player.name == "player_1")
+                {
+                    if (owner == 1)
+                    {
+                        Debug.Log("player1 Hit yourself");
+                        player.GetComponent<BomberAgent>().AddReward(-3f);
+                    }
+                    else
+                    {
+                        Debug.Log("player2 Hit player1");
+                        player.GetComponent<BomberAgent>().AddReward(-1.5f);
+
+                    }
+                }
+                else if (player.name == "player_2")
+                {
+                    if (owner == 2)
+                    {
+                        Debug.Log("player2 Hit yourself");
+                        player.GetComponent<BomberAgentNoReset>().AddReward(-3f);
+                    }
+                    else
+                    {
+                        Debug.Log("player1 Hit player2");
+                        player.GetComponent<BomberAgentNoReset>().AddReward(-1.5f);
+                    }
+                }
             }
+            player.Hit();
         }
 
         if (col.gameObject.tag == "Bomb")

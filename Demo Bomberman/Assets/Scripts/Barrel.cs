@@ -16,15 +16,8 @@ public class Barrel : MonoBehaviour
         feld = this.transform.parent.transform.parent.gameObject;
         int x = (int) (transform.position.x - feld.transform.position.x);
         int y = (int) (transform.position.y - feld.transform.position.y);
-        feld.GetComponent<Arena>().grid[x, y] = 2;
+        feld.GetComponent<Arena>().grid[x, y] = (int)Arena.GridValues.BARREL;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Hit()
     {
         GameObject tile = Instantiate(block, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);

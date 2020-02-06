@@ -12,7 +12,7 @@ public class Wall : MonoBehaviour
         feld = GetComponentInParent<Arena>();
         int x = (int)this.transform.localPosition.x;
         int y = (int)this.transform.localPosition.y;
-        feld.grid[x, y] = 1;
+        feld.grid[x, y] = (int)Arena.GridValues.WALL;
     }
 
     // Update is called once per frame

@@ -1651,7 +1651,7 @@ Transform:
   m_LocalScale: {x: 0.356, y: 0.356, z: 1}
   m_Children: []
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6271622904261714696
 SpriteRenderer:
@@ -1767,12 +1767,13 @@ MonoBehaviour:
   activeBombs: 0
   strength: 3
   shield: 0
+  agent: 0
   normal: {fileID: 21300000, guid: 8f03073d50c5d474a90247c0d0dd7d1c, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!1 &6271622904270915299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1958,7 @@ Transform:
   - {fileID: 6271622905513638305}
   - {fileID: 6271622905071383355}
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6271622904348487230
 GameObject:
@@ -2406,7 +2407,7 @@ Transform:
   - {fileID: 6271622905503173222}
   - {fileID: 6271622905594319554}
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6271622904405560575
 GameObject:
@@ -3999,7 +4000,7 @@ Transform:
   - {fileID: 6271622904060525132}
   - {fileID: 6271622905328652706}
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6271622904625124148
 GameObject:
@@ -7876,7 +7877,7 @@ Transform:
   m_LocalScale: {x: 0.356, y: 0.356, z: 1}
   m_Children: []
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6271622905093833482
 SpriteRenderer:
@@ -7945,12 +7946,13 @@ MonoBehaviour:
   activeBombs: 0
   strength: 3
   shield: 0
+  agent: 0
   normal: {fileID: 21300000, guid: c8e98f3ac81643b4899404d2480b4b88, type: 3}
   getroffen: {fileID: 21300000, guid: 73c572ddb9d8e9943bc752c5148da21b, type: 3}
   bombe: {fileID: 4462569681929774835, guid: c7c7234aa0777fc4b9037e4685d89f4c, type: 3}
-  isOnCrack: 0
-  isOnSpeed: 0
-  isOnCannabis: 0
+  hasPartyHut: 0
+  hasCoffee: 0
+  hasSnail: 0
 --- !u!50 &6271622905093833588
 Rigidbody2D:
   serializedVersion: 4
@@ -11488,7 +11490,7 @@ Transform:
   - {fileID: 5338311832742451961}
   - {fileID: 5338311834699323016}
   m_Father: {fileID: 6271622906124803038}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6271622905643126597
 GameObject:
@@ -15539,12 +15541,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6271622905093833589}
+  - {fileID: 6271622904261714699}
   - {fileID: 6271622904593320480}
   - {fileID: 6271622904382089045}
   - {fileID: 6271622904277497193}
   - {fileID: 6271622905642818037}
-  - {fileID: 6271622905093833589}
-  - {fileID: 6271622904261714699}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15562,7 +15564,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players_alive: 0
   players: []
-  spielfeld: {fileID: 6271622906124803036}
 --- !u!212 &6271622906124803033
 SpriteRenderer:
   m_ObjectHideFlags: 0

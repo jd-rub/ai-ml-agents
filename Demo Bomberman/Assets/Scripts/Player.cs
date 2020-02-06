@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public bool playMode = false;
+
     //player stats
     private bool alive;
     public float base_speed;
@@ -29,39 +31,35 @@ public class Player : MonoBehaviour
     private string input_bomb;
     private bool button_down;
     private Vector2 oldPos;
-    public bool isOnCrack, isOnSpeed, isOnCannabis;
+    public bool hasPartyHut, hasCoffee, hasSnail;
     private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        maxBombs = 3;
+        maxBombs = 2;
         activeBombs = 0;
         x_axis = "move_x_" + id.ToString();
         y_axis = "move_y_" + id.ToString();
         input_bomb = "bomb_" + id.ToString();
         button_down = false;
         alive = true;
-        isOnCrack = false;
-        isOnSpeed = false;
-        isOnCannabis = false;
+        hasPartyHut = false;
+        hasCoffee = false;
+        hasSnail = false;
         shield = invincible = false;
         oldPos = RoundPosition();
-
-        if (agent)
-        this.transform.parent.GetChild(1).GetComponent<Arena>().players.Add(this.transform.gameObject);
-        else GetComponentInParent<Arena>().players.Add(this.transform.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isOnSpeed)
+        if (hasCoffee)
         {
             speed = 0.3f;
         }
-        else if (isOnCannabis)
+        else if (hasSnail)
         {
             speed = 0.05f;
         }
@@ -84,9 +82,9 @@ public class Player : MonoBehaviour
         }
 
         //Planting a bomb
-        if ((Input.GetAxisRaw(input_bomb) == 1 || (RoundPosition() != oldPos && isOnCrack)) && alive)
+        if ((Input.GetAxisRaw(input_bomb) == 1 || (RoundPosition() != oldPos && hasPartyHut)) && alive)
         {
-            if (!button_down || isOnCrack)
+            if (!button_down || hasPartyHut)
             {
                 PlaceBomb();
                 button_down = true;
@@ -104,12 +102,31 @@ public class Player : MonoBehaviour
 
     public void PlaceBomb()
     {
-        if (activeBombs < maxBombs)
+        if (this.playMode)
         {
-            GameObject bomb = Instantiate(bombe, RoundPosition(), Quaternion.identity);
-            bomb.GetComponent<Bomb>().SetOwner(this.gameObject);
-            activeBombs++;
-            bomb.transform.parent = this.transform.parent.transform;
+            if ((activeBombs < maxBombs) && (this.transform.parent.GetComponent<Arena>().grid[(int)RoundPosition().x, (int)RoundPosition().y] == (int)Arena.GridValues.FLOOR))
+            {
+                GameObject bomb = Instantiate(bombe, new Vector3(-100, -100, 5), Quaternion.identity);
+                bomb.GetComponent<Bomb>().SetOwner(this.gameObject);
+                activeBombs++;
+                bomb.transform.parent = this.transform.parent;
+                bomb.transform.localPosition = RoundPosition();
+
+                bomb.GetComponent<Bomb>().strength = this.strength;
+            }
+        }
+        else
+        {
+            if ((activeBombs < maxBombs) && (this.transform.parent.GetChild(2).GetComponent<Arena>().grid[(int)RoundPosition().x, (int)RoundPosition().y] == (int)Arena.GridValues.FLOOR))
+            {
+                GameObject bomb = Instantiate(bombe, new Vector3(-100, -100, 5), Quaternion.identity);
+                bomb.GetComponent<Bomb>().SetOwner(this.gameObject);
+                activeBombs++;
+                bomb.transform.parent = this.transform.parent.GetChild(2);
+                bomb.transform.localPosition = RoundPosition();
+
+                bomb.GetComponent<Bomb>().strength = this.strength;
+            }
         }
     }
 
@@ -133,36 +150,42 @@ public class Player : MonoBehaviour
         if (!shield && !invincible)
         {
             alive = false;
-            this.GetComponent<SpriteRenderer>().sprite = getroffen;
-            StartCoroutine(ExecuteAfterTime(1));
+            if (this.playMode)
+            {
+                this.transform.parent.GetComponent<Arena>().players_alive--; 
+                this.GetComponent<SpriteRenderer>().sprite = getroffen;
+            }
         }
         else
         {
             invincible = true;
             gameObject.layer = LayerMask.NameToLayer("Invincible_player");
             shield = false;
+
             Invoke("Inv_frames", 1.2f);
         }
     }
 
-
-    //coroutine die nach 1sek nach dem treffer ausgeführt wird und den spieler automatisch resettet
-    IEnumerator ExecuteAfterTime(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        //GameObject.Find("Spielfeld").GetComponent<Arena>().players_alive--;
-        GetComponentInParent<Arena>().players_alive--;
-    }
-
     private Vector2 RoundPosition()
     {
+        if (agent)
+        {
+            Vector3 pivot = this.transform.parent.GetChild(2).GetChild(1).GetChild(0).transform.position;
+            Vector3 position = this.transform.position - pivot;
+            return new Vector2(Mathf.Round(position.x), Mathf.Round(position.y));
+        }
+
         return new Vector2(Mathf.Round(this.transform.position.x), Mathf.Round(this.transform.position.y));
     }
 
     public bool GetAlive()
     {
         return alive;
+    }
+
+    public void SetAlive(bool alive)
+    {
+        this.alive = alive;
     }
 
     private void Inv_frames()
